@@ -1,0 +1,163 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<section class="py-20 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h1 class="text-4xl font-bold text-center mb-4 dark:text-white">Foire Aux Questions</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 text-center mb-16">Trouvez rapidement des réponses à vos questions les plus fréquentes sur Cutflow.</p>
+
+        <div class="space-y-4">
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Cutflow est-il gratuit ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Cutflow propose une version d’essai gratuite de 14 jours permettant d’accéder à l’ensemble des fonctionnalités.
+                        Aucune carte bancaire n’est requise pour démarrer.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">À qui s’adresse Cutflow ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Cutflow s’adresse aussi bien aux créateurs de contenu débutants qu’aux professionnels de la vidéo,
+                        notamment les YouTubeurs, podcasteurs, équipes marketing et vidéastes indépendants.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Quels formats vidéo sont pris en charge ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Cutflow supporte tous les formats standards (MP4, MOV, AVI, MKV) ainsi que certains formats RAW
+                        pour les utilisateurs professionnels.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Sur quels systèmes d’exploitation fonctionne Cutflow ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Cutflow est disponible sur Windows et macOS. Une version Linux est actuellement en cours de développement.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Les fonctionnalités basées sur l’IA sont-elles incluses ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Oui, les fonctionnalités d’intelligence artificielle (coupe automatique, sous-titres, détection de scènes, etc.)
+                        sont incluses selon la formule choisie.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Puis-je utiliser Cutflow pour YouTube, Shorts ou TikTok ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Absolument. Cutflow propose des exports optimisés pour YouTube, YouTube Shorts, TikTok, Instagram Reels
+                        et d’autres plateformes sociales.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Existe-t-il une marketplace de plugins ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Oui, Cutflow dispose d’une marketplace de plugins développés par l’équipe Cutflow et la communauté,
+                        permettant d’étendre les fonctionnalités du logiciel.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Mes données et projets sont-ils sécurisés ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        La sécurité est une priorité. Vos projets sont stockés localement ou sur le cloud de manière chiffrée,
+                        conformément aux standards de sécurité et au RGPD.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Puis-je annuler mon abonnement à tout moment ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Oui, les abonnements sont sans engagement. Vous pouvez annuler à tout moment depuis votre espace utilisateur.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-gray-100 dark:border-gray-600">
+                <button class="w-full text-left p-6 focus:outline-none flex justify-between items-center dark:text-white" onclick="toggleFAQ(this)">
+                    <h3 class="font-bold">Comment contacter le support Cutflow ?</h3>
+                    <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Notre équipe support est disponible via le formulaire de contact ou par email.
+                        Les utilisateurs premium bénéficient d’une assistance prioritaire.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center">
+            <h2 class="text-2xl font-bold mb-6 dark:text-white">Vous n'avez pas trouvé votre réponse ?</h2>
+            <a href="/contact" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition border-2 border-blue-700 shadow-md">Contactez notre support</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleFAQ(button) {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('svg');
+        
+        const isHidden = answer.classList.contains('hidden');
+        
+        if (isHidden) {
+            answer.classList.remove('hidden');
+            icon.classList.add('rotate-180');
+        } else {
+            answer.classList.add('hidden');
+            icon.classList.remove('rotate-180');
+        }
+    }
+</script>
+
+<%- include('partials/footer') %>

@@ -1,39 +1,58 @@
 <%- include('partials/head') %>
 <%- include('partials/header') %>
 
-<section class="py-20 bg-white">
+<section class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold mb-8">Découvrez toute la puissance de Cutflow</h1>
-        <p class="text-xl text-gray-600 mb-12">Conçu pour les créateurs exigeants, Cutflow offre une suite d'outils complète pour transformer vos idées en chefs-d'œuvre visuels.</p>
+        <h1 class="text-4xl font-bold mb-8 dark:text-white">Découvrez toute la puissance de Cutflow</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-12">Conçu pour les créateurs exigeants, Cutflow offre une suite d'outils complète pour transformer vos idées en chefs-d'œuvre visuels.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
             <div>
-                <h2 class="text-3xl font-bold mb-6">Montage assisté par IA</h2>
-                <p class="text-gray-600 mb-4">Notre IA analyse vos rushes pour identifier les meilleurs moments, supprimer les silences inutiles et suggérer des transitions fluides.</p>
+                <h2 class="text-3xl font-bold mb-6 dark:text-white">Montage assisté par IA</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Notre IA analyse vos rushes pour identifier les meilleurs moments, supprimer les silences inutiles et suggérer des transitions fluides.</p>
                 <ul class="space-y-2">
-                    <li class="flex items-center"><span class="text-blue-600 mr-2">✓</span> Détection automatique des scènes</li>
-                    <li class="flex items-center"><span class="text-blue-600 mr-2">✓</span> Sous-titrage automatique en 50 langues</li>
-                    <li class="flex items-center"><span class="text-blue-600 mr-2">✓</span> Suppression du bruit de fond intelligente</li>
+                    <li class="flex items-center dark:text-gray-300"><span class="text-blue-600 dark:text-blue-400 mr-2">✓</span> Détection automatique des scènes</li>
+                    <li class="flex items-center dark:text-gray-300"><span class="text-blue-600 dark:text-blue-400 mr-2">✓</span> Sous-titrage automatique en 50 langues</li>
+                    <li class="flex items-center dark:text-gray-300"><span class="text-blue-600 dark:text-blue-400 mr-2">✓</span> Suppression du bruit de fond intelligente</li>
                 </ul>
             </div>
-            <div class="bg-gray-200 h-80 rounded-xl flex items-center justify-center">
-                <p class="text-gray-500">[Capture d'écran - IA Montage]</p>
+            <div class="bg-gray-200 dark:bg-gray-800 h-80 rounded-xl flex items-center justify-center border-2 border-gray-300 dark:border-gray-700 shadow-inner">
+                <p class="text-gray-500 dark:text-gray-400 font-medium">[Capture d'écran - IA Montage]</p>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24 md:flex-row-reverse">
             <div class="md:order-2">
-                <h2 class="text-3xl font-bold mb-6">Interface Intuitive</h2>
-                <p class="text-gray-600 mb-4">Plus besoin de passer des heures à chercher vos outils. Tout est à portée de clic dans une interface pensée par des monteurs pour des monteurs.</p>
+                <h2 class="text-3xl font-bold mb-6 dark:text-white">Interface Intuitive</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Plus besoin de passer des heures à chercher vos outils. Tout est à portée de clic dans une interface pensée par des monteurs pour des monteurs.</p>
             </div>
-            <div class="bg-gray-200 h-80 rounded-xl flex items-center justify-center md:order-1">
-                <p class="text-gray-500">[Capture d'écran - Interface]</p>
+            <div class="bg-gray-200 dark:bg-gray-800 h-80 rounded-xl flex items-center justify-center md:order-1 border-2 border-gray-300 dark:border-gray-700 shadow-inner">
+                <p class="text-gray-500 dark:text-gray-400 font-medium">[Capture d'écran - Interface]</p>
             </div>
         </div>
 
-        <div class="text-center bg-blue-600 text-white p-12 rounded-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
+            <div>
+                <h2 class="text-3xl font-bold mb-6 dark:text-white">Bibliothèque de Plugins</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Étendez les capacités de Cutflow avec notre écosystème de plugins. Le plus populaire, <strong>Video Finder IA</strong>, vous permet de retrouver la source originale de n'importe quel extrait vidéo en quelques secondes via une recherche web intelligente.</p>
+                <ul class="space-y-2">
+                    <li class="flex items-center dark:text-gray-300"><span class="text-blue-600 dark:text-blue-400 mr-2">✓</span> Recherche inversée par IA</li>
+                    <li class="flex items-center dark:text-gray-300"><span class="text-blue-600 dark:text-blue-400 mr-2">✓</span> Identification des sources et auteurs</li>
+                    <li class="flex items-center dark:text-gray-300"><span class="text-blue-600 dark:text-blue-400 mr-2">✓</span> Installation en un clic</li>
+                </ul>
+            </div>
+            <div class="bg-indigo-600 dark:bg-indigo-800 h-80 rounded-xl flex flex-col items-center justify-center text-white p-8 border-4 border-indigo-500 dark:border-indigo-700 shadow-xl">
+                <div class="bg-white/20 p-4 rounded-full mb-4 border-2 border-white/30">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <p class="text-xl font-bold">Video Finder IA</p>
+                <p class="text-blue-100 text-center mt-2">Analysez vos extraits et trouvez leur origine instantanément.</p>
+            </div>
+        </div>
+
+        <div class="text-center bg-blue-600 dark:bg-blue-800 text-white p-12 rounded-2xl border-4 border-blue-500 dark:border-blue-700 shadow-2xl">
             <h2 class="text-3xl font-bold mb-6">Prêt à passer au niveau supérieur ?</h2>
-            <a href="/connexion" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition">Commencer l'essai gratuit</a>
+            <a href="/connexion" class="inline-block bg-white text-blue-600 dark:text-blue-900 px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition border-2 border-transparent hover:border-blue-400 shadow-lg">Commencer l'essai gratuit</a>
         </div>
     </div>
 </section>

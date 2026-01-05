@@ -1,28 +1,28 @@
 <%- include('partials/head') %>
 <%- include('partials/header') %>
 
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
     <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold text-center mb-4">Choisissez votre offre</h1>
-        <p class="text-xl text-gray-600 text-center mb-16">Des tarifs transparents, sans engagement.</p>
+        <h1 class="text-4xl font-bold text-center mb-4 dark:text-white">Choisissez votre offre</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300 text-center mb-16">Des tarifs transparents, sans engagement.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <!-- Starter -->
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col">
-                <h3 class="text-2xl font-bold mb-4">Starter</h3>
-                <div class="text-4xl font-bold mb-6">0€ <span class="text-sm font-normal text-gray-500">/ mois</span></div>
-                <p class="text-gray-600 mb-8">Pour découvrir la puissance de Cutflow.</p>
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg border-2 border-gray-100 dark:border-gray-600 flex flex-col hover:border-blue-400 transition-all">
+                <h3 class="text-2xl font-bold mb-4 dark:text-white">Starter</h3>
+                <div class="text-4xl font-bold mb-6 dark:text-white">0€ <span class="text-sm font-normal text-gray-500 dark:text-gray-400">/ mois</span></div>
+                <p class="text-gray-600 dark:text-gray-300 mb-8">Pour découvrir la puissance de Cutflow.</p>
                 <ul class="space-y-4 mb-10 flex-grow">
-                    <li class="flex items-center text-gray-600"><span class="text-green-500 mr-2">✓</span> Export 720p</li>
-                    <li class="flex items-center text-gray-600"><span class="text-green-500 mr-2">✓</span> Filigrane Cutflow</li>
-                    <li class="flex items-center text-gray-600"><span class="text-green-500 mr-2">✓</span> 5 Go de stockage cloud</li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-300"><span class="text-green-500 mr-2">✓</span> Export 720p</li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-300"><span class="text-green-500 mr-2">✓</span> Filigrane Cutflow</li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-300"><span class="text-green-500 mr-2">✓</span> 5 Go de stockage cloud</li>
                 </ul>
-                <a href="/connexion" class="block text-center border-2 border-blue-600 text-blue-600 font-bold py-3 rounded-xl hover:bg-blue-50 transition">Commencer gratuitement</a>
+                <a href="/connexion" class="block text-center border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-bold py-3 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition">Commencer gratuitement</a>
             </div>
 
             <!-- Pro -->
-            <div class="bg-blue-600 p-8 rounded-2xl shadow-xl border border-blue-700 flex flex-col transform scale-105 z-10 text-white">
-                <div class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full self-start mb-4 uppercase tracking-wider">Recommandé</div>
+            <div class="bg-blue-600 dark:bg-blue-800 p-8 rounded-2xl shadow-xl border-4 border-blue-700 dark:border-blue-900 flex flex-col md:transform md:scale-105 z-10 text-white my-4 md:my-0">
+                <div class="bg-blue-500 dark:bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full self-start mb-4 uppercase tracking-wider border border-white/20">Recommandé</div>
                 <h3 class="text-2xl font-bold mb-4">Pro</h3>
                 <div class="text-4xl font-bold mb-6">19€ <span class="text-sm font-normal text-blue-200">/ mois</span></div>
                 <p class="text-blue-100 mb-8">Pour les créateurs de contenu sérieux.</p>
@@ -32,21 +32,21 @@
                     <li class="flex items-center"><span class="text-white mr-2">✓</span> 100 Go de stockage cloud</li>
                     <li class="flex items-center"><span class="text-white mr-2">✓</span> Support prioritaire</li>
                 </ul>
-                <a href="/connexion" class="block text-center bg-white text-blue-600 font-bold py-3 rounded-xl hover:bg-gray-100 transition">S'abonner maintenant</a>
+                <a href="/connexion" class="block text-center bg-white text-blue-600 dark:text-blue-900 font-bold py-3 rounded-xl hover:bg-gray-100 transition border-2 border-transparent">S'abonner maintenant</a>
             </div>
 
             <!-- Studio -->
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col">
-                <h3 class="text-2xl font-bold mb-4">Studio</h3>
-                <div class="text-4xl font-bold mb-6">49€ <span class="text-sm font-normal text-gray-500">/ mois</span></div>
-                <p class="text-gray-600 mb-8">Pour les équipes et agences.</p>
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg border-2 border-gray-100 dark:border-gray-600 flex flex-col hover:border-blue-400 transition-all">
+                <h3 class="text-2xl font-bold mb-4 dark:text-white">Studio</h3>
+                <div class="text-4xl font-bold mb-6 dark:text-white">49€ <span class="text-sm font-normal text-gray-500 dark:text-gray-400">/ mois</span></div>
+                <p class="text-gray-600 dark:text-gray-300 mb-8">Pour les équipes et agences.</p>
                 <ul class="space-y-4 mb-10 flex-grow">
-                    <li class="flex items-center text-gray-600"><span class="text-green-500 mr-2">✓</span> Tout du pack Pro</li>
-                    <li class="flex items-center text-gray-600"><span class="text-green-500 mr-2">✓</span> Travail collaboratif</li>
-                    <li class="flex items-center text-gray-600"><span class="text-green-500 mr-2">✓</span> Stockage illimité</li>
-                    <li class="flex items-center text-gray-600"><span class="text-green-500 mr-2">✓</span> Gestion multi-utilisateurs</li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-300"><span class="text-green-500 mr-2">✓</span> Tout du pack Pro</li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-300"><span class="text-green-500 mr-2">✓</span> Travail collaboratif</li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-300"><span class="text-green-500 mr-2">✓</span> Stockage illimité</li>
+                    <li class="flex items-center text-gray-600 dark:text-gray-300"><span class="text-green-500 mr-2">✓</span> Gestion multi-utilisateurs</li>
                 </ul>
-                <a href="/connexion" class="block text-center border-2 border-blue-600 text-blue-600 font-bold py-3 rounded-xl hover:bg-blue-50 transition">Contacter l'équipe</a>
+                <a href="/connexion" class="block text-center border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-bold py-3 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition">Contacter l'équipe</a>
             </div>
         </div>
     </div>

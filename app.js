@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('./database');
@@ -10,13 +11,69 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware
+// --- Configuration du serveur et des middlewares ---
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'cutflow-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Utiliser secure: true en production avec HTTPS
+}));
 
-// Routes
+// Injection de l'utilisateur dans les variables locales des vues
+app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+});
+
+// Protection des routes nécessitant une connexion
+const isAuthenticated = (req, res, next) => {
+    if (req.session.user) {
+        next();
+    } else {
+        res.redirect('/connexion?error=Veuillez vous connecter pour accéder à cette page');
+    }
+};
+
+// --- Définition des routes (Endpoints) ---
+
+// Gestion des abonnements
+app.post('/annuler-abonnement', isAuthenticated, (req, res) => {
+    const userId = req.session.user.id;
+    const stmt = db.prepare('UPDATE users SET license_status = "Inactif", license_type = "Aucune", next_billing_date = NULL WHERE id = ?');
+    stmt.run(userId, (err) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send("Erreur lors de l'annulation de l'abonnement.");
+        } else {
+            // Mise à jour immédiate de la session pour refléter les changements
+            req.session.user.license_status = 'Inactif';
+            req.session.user.license_type = 'Aucune';
+            req.session.user.next_billing_date = null;
+            res.redirect('/dashboard?success=Abonnement annulé avec succès');
+        }
+    });
+    stmt.finalize();
+});
+
+app.post('/supprimer-compte', isAuthenticated, (req, res) => {
+    const userId = req.session.user.id;
+    const stmt = db.prepare('DELETE FROM users WHERE id = ?');
+    stmt.run(userId, (err) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send("Erreur lors de la suppression du compte.");
+        } else {
+            req.session.destroy();
+            res.redirect('/?success=Compte supprimé');
+        }
+    });
+    stmt.finalize();
+});
+
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Accueil - Cutflow' });
+    res.render('index', { title: 'Accueil - Cutflow', success: req.query.success });
 });
 
 app.get('/produit', (req, res) => {
@@ -54,7 +111,68 @@ app.post('/contact', (req, res) => {
 });
 
 app.get('/connexion', (req, res) => {
+    if (req.session.user) {
+        return res.redirect('/dashboard');
+    }
     res.render('connexion', { title: 'Connexion - Cutflow', error: req.query.error });
+});
+
+app.get('/inscription', (req, res) => {
+    if (req.session.user) {
+        return res.redirect('/dashboard');
+    }
+    res.render('inscription', { title: 'Inscription - Cutflow', error: req.query.error });
+});
+
+app.post('/inscription', (req, res) => {
+    const { email, password, 'confirm-password': confirmPassword, rgpd } = req.body;
+
+    // Validation simple des champs obligatoires
+    if (!rgpd) {
+        return res.redirect('/inscription?error=Vous devez accepter les conditions');
+    }
+
+    if (password !== confirmPassword) {
+        return res.redirect('/inscription?error=Les mots de passe ne correspondent pas');
+    }
+
+    // On s'assure que le compte n'existe pas déjà
+    const checkStmt = db.prepare('SELECT id FROM users WHERE email = ?');
+    checkStmt.get(email, (err, row) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).send("Erreur lors de l'inscription.");
+        }
+        if (row) {
+            return res.redirect('/inscription?error=Cet email est déjà utilisé');
+        }
+
+        // Création du nouvel utilisateur (période d'essai par défaut)
+        const stmt = db.prepare('INSERT INTO users (email, password, next_billing_date) VALUES (?, ?, ?)');
+        const nextBilling = new Date();
+        nextBilling.setMonth(nextBilling.getMonth() + 1); // +1 mois
+        const nextBillingStr = nextBilling.toISOString().split('T')[0];
+
+        stmt.run(email, password, nextBillingStr, function(err) {
+            if (err) {
+                console.error(err.message);
+                res.status(500).send("Erreur lors de l'inscription.");
+            } else {
+                // Connexion automatique après la création du compte
+                req.session.user = {
+                    id: this.lastID,
+                    email: email,
+                    license_type: 'Gratuit',
+                    license_status: 'Actif',
+                    next_billing_date: nextBillingStr,
+                    software_version: '1.0.0'
+                };
+                res.redirect('/dashboard');
+            }
+        });
+        stmt.finalize();
+    });
+    checkStmt.finalize();
 });
 
 app.post('/connexion', (req, res) => {
@@ -65,13 +183,51 @@ app.post('/connexion', (req, res) => {
             console.error(err.message);
             res.status(500).send("Erreur lors de la connexion.");
         } else if (row) {
-            // Dans un vrai projet, on utiliserait des sessions ou des tokens
-            res.send(`<h1>Bienvenue, ${row.email} !</h1><p>Connexion réussie.</p><a href="/">Retour à l'accueil</a>`);
+            req.session.user = {
+                id: row.id,
+                email: row.email,
+                license_type: row.license_type,
+                license_status: row.license_status,
+                next_billing_date: row.next_billing_date,
+                software_version: row.software_version
+            };
+            res.redirect('/dashboard');
         } else {
             res.redirect('/connexion?error=Identifiants incorrects');
         }
     });
     stmt.finalize();
+});
+
+app.get('/faq', (req, res) => {
+    res.render('faq', { title: 'FAQ - Cutflow' });
+});
+
+app.get('/dashboard', isAuthenticated, (req, res) => {
+    db.all('SELECT * FROM contacts WHERE email = ? ORDER BY created_at DESC LIMIT 3', [req.session.user.email], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.render('dashboard', { title: 'Tableau de bord - Cutflow', user: req.session.user, success: req.query.success, contacts: [] });
+        } else {
+            res.render('dashboard', { title: 'Tableau de bord - Cutflow', user: req.session.user, success: req.query.success, contacts: rows });
+        }
+    });
+});
+
+app.get('/plugins', (req, res) => {
+    db.all('SELECT * FROM plugins', (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send("Erreur lors de la récupération des plugins.");
+        } else {
+            res.render('plugins', { title: 'Bibliothèque de Plugins - Cutflow', plugins: rows });
+        }
+    });
+});
+
+app.get('/deconnexion', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
 });
 
 app.get('/legal/:page', (req, res) => {
@@ -90,11 +246,13 @@ app.get('/legal/:page', (req, res) => {
     }
 });
 
-// Gestion des erreurs 404
+// --- Fin du routage ---
+
+// Catch-all pour les pages non trouvées
 app.use((req, res) => {
     res.status(404).render('404', { title: 'Page non trouvée' });
 });
 
 app.listen(PORT, () => {
-    console.log(`Serveur lancé sur http://localhost:${PORT}`);
+    console.log(`Le serveur Cutflow est prêt : http://localhost:${PORT}`);
 });

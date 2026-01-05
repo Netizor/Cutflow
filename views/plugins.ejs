@@ -1,0 +1,275 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<div class="bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Bibliothèque de Plugins</h1>
+            <p class="text-gray-600 dark:text-gray-400">Personnalisez votre expérience Cutflow avec des outils créés par nous et notre communauté.</p>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-8 relative">
+            <!-- Liste et Recherche -->
+            <div id="main-content" class="flex-grow transition-all duration-300">
+                <div class="mb-6 flex flex-col md:flex-row gap-4">
+                    <div class="relative flex-grow">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </span>
+                        <input type="text" id="plugin-search" placeholder="Rechercher un plugin..." class="pl-10 w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white">
+                    </div>
+                    <select id="category-filter" class="px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 dark:text-white">
+                        <option value="all">Toutes les catégories</option>
+                        <option value="mine">Mon Espace</option>
+                        <option value="IA">IA</option>
+                        <option value="Image">Image</option>
+                        <option value="Audio">Audio</option>
+                        <option value="Effets">Effets</option>
+                        <option value="Graphisme">Graphisme</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="plugin-list">
+                    <% plugins.forEach(plugin => { %>
+                        <div class="plugin-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border-2 border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-md transition cursor-pointer" 
+                             data-id="<%= plugin.id %>" 
+                             data-name="<%= plugin.name %>" 
+                             data-category="<%= plugin.category %>"
+                             data-price="<%= plugin.price %>"
+                             data-creator="<%= plugin.creator %>"
+                             data-description="<%= plugin.description %>"
+                             data-long-description="<%= plugin.longDescription %>">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-3 <%= plugin.price === 'Gratuit' ? 'bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 border-green-200 dark:border-green-700' : 'bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 border-blue-200 dark:border-blue-700' %> rounded-lg border-2">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 00-1 1v1a2 2 0 11-4 0v-1a1 1 0 00-1-1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+                                </div>
+                                <span class="text-xs font-bold uppercase px-2 py-1 rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600"><%= plugin.category %></span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2"><%= plugin.name %></h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2"><%= plugin.description %></p>
+                            <div class="flex justify-between items-center mt-auto">
+                                <span class="font-bold <%= plugin.price === 'Gratuit' ? 'text-green-600 dark:text-green-400' : 'text-gray-800 dark:text-gray-200' %>"><%= plugin.price %></span>
+                                <span class="text-xs text-gray-400 dark:text-gray-500">Par <%= plugin.creator %></span>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+                
+                <div id="no-results" class="hidden text-center py-12">
+                    <p class="text-gray-500 dark:text-gray-400 text-xl">Aucun plugin ne correspond à votre recherche.</p>
+                </div>
+            </div>
+
+            <!-- Volet de Description (Right Sidebar) -->
+            <div id="description-sidebar" class="hidden w-full lg:w-96 lg:sticky lg:top-24 h-fit bg-white dark:bg-gray-800 rounded-xl shadow-lg border-4 border-gray-200 dark:border-gray-700 overflow-hidden transform transition-all duration-300 translate-x-full opacity-0">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 id="side-name" class="text-2xl font-bold text-gray-800 dark:text-white">Détails</h2>
+                        <button id="close-sidebar" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span id="side-category" class="text-xs font-bold uppercase px-2 py-1 rounded bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800">IA</span>
+                            <span id="side-price" class="text-xs font-bold uppercase px-2 py-1 rounded bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 border border-green-200 dark:border-green-800">Gratuit</span>
+                        </div>
+                        <p id="side-creator" class="text-sm text-gray-500 dark:text-gray-400 italic">Par Cutflow</p>
+                    </div>
+
+                    <div class="prose prose-sm text-gray-600 dark:text-gray-300 mb-8">
+                        <p id="side-long-description">Sélectionnez un plugin pour voir les détails.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <% if (user) { %>
+                            <button id="add-to-space-btn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center relative overflow-hidden border-2 border-blue-700 shadow-md">
+                                <span id="btn-text" class="flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                    Ajouter à mon espace
+                                </span>
+                                <span id="btn-loader" class="hidden">
+                                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        <% } else { %>
+                            <div class="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg border-2 border-blue-100 dark:border-blue-900 text-center">
+                                <p class="text-sm text-blue-800 dark:text-blue-300 mb-3">Connectez-vous pour ajouter ce plugin à votre espace.</p>
+                                <a href="/connexion" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition border-2 border-blue-700">Se connecter</a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchInput = document.getElementById('plugin-search');
+    const categoryFilter = document.getElementById('category-filter');
+    const pluginList = document.getElementById('plugin-list');
+    const pluginCards = document.querySelectorAll('.plugin-card');
+    const noResults = document.getElementById('no-results');
+    
+    const sidebar = document.getElementById('description-sidebar');
+    const mainContent = document.getElementById('main-content');
+    const closeSidebarBtn = document.getElementById('close-sidebar');
+    
+    const sideName = document.getElementById('side-name');
+    const sideCategory = document.getElementById('side-category');
+    const sidePrice = document.getElementById('side-price');
+    const sideCreator = document.getElementById('side-creator');
+    const sideLongDesc = document.getElementById('side-long-description');
+    
+    const addToSpaceBtn = document.getElementById('add-to-space-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnLoader = document.getElementById('btn-loader');
+
+    let currentPluginId = null;
+    let myPlugins = JSON.parse(localStorage.getItem('myPlugins') || '[]');
+
+    // Mise à jour de l'état du bouton d'ajout/retrait
+    function updateBtnState() {
+        if (!currentPluginId || !addToSpaceBtn) return;
+        
+        const isAdded = myPlugins.includes(currentPluginId);
+        if (isAdded) {
+            btnText.innerHTML = `
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                Retirer de mon espace
+            `;
+            addToSpaceBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            addToSpaceBtn.classList.add('bg-red-500', 'hover:bg-red-600');
+        } else {
+            btnText.innerHTML = `
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Ajouter à mon espace
+            `;
+            addToSpaceBtn.classList.remove('bg-red-500', 'hover:bg-red-600');
+            addToSpaceBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+        }
+    }
+
+    // Système de filtrage dynamique (recherche et catégories)
+    function filterPlugins() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedCategory = categoryFilter.value;
+        let hasResults = false;
+
+        pluginCards.forEach(card => {
+            const name = card.dataset.name.toLowerCase();
+            const description = card.dataset.description.toLowerCase();
+            const category = card.dataset.category;
+            const id = card.dataset.id;
+            
+            const matchesSearch = name.includes(searchTerm) || description.includes(searchTerm);
+            let matchesCategory = false;
+            
+            if (selectedCategory === 'all') {
+                matchesCategory = true;
+            } else if (selectedCategory === 'mine') {
+                matchesCategory = myPlugins.includes(id);
+            } else {
+                matchesCategory = category === selectedCategory;
+            }
+
+            if (matchesSearch && matchesCategory) {
+                card.style.display = 'block';
+                hasResults = true;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        noResults.style.display = hasResults ? 'none' : 'block';
+    }
+
+    searchInput.addEventListener('input', filterPlugins);
+    categoryFilter.addEventListener('change', filterPlugins);
+
+    // Gestion du clic sur une carte de plugin
+    pluginCards.forEach(card => {
+        card.addEventListener('click', () => {
+            currentPluginId = card.dataset.id;
+            
+            // On remplit les informations du volet latéral
+            sideName.textContent = card.dataset.name;
+            sideCategory.textContent = card.dataset.category;
+            sidePrice.textContent = card.dataset.price;
+            sideCreator.textContent = `Par ${card.dataset.creator}`;
+            sideLongDesc.textContent = card.dataset.longDescription;
+
+            // Ajustement des styles des badges (gratuit vs payant)
+            if (card.dataset.price === 'Gratuit') {
+                sidePrice.className = 'text-xs font-bold uppercase px-2 py-1 rounded bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 border border-green-200 dark:border-green-800';
+            } else {
+                sidePrice.className = 'text-xs font-bold uppercase px-2 py-1 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600';
+            }
+
+            updateBtnState();
+
+            // Affichage du volet avec animation
+            sidebar.classList.remove('hidden', 'translate-x-full', 'opacity-0');
+            sidebar.classList.add('translate-x-0', 'opacity-100');
+            
+            // Centrage sur le volet pour les petits écrans (mobile)
+            if (window.innerWidth < 1024) {
+                sidebar.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Action d'ajout à l'espace utilisateur
+    if (addToSpaceBtn) {
+        addToSpaceBtn.addEventListener('click', () => {
+            // Affichage du loader pour l'effet visuel
+            btnText.classList.add('hidden');
+            btnLoader.classList.remove('hidden');
+            addToSpaceBtn.disabled = true;
+
+            setTimeout(() => {
+                const index = myPlugins.indexOf(currentPluginId);
+                if (index > -1) {
+                    // Retrait
+                    myPlugins.splice(index, 1);
+                    modal.show({
+                        title: 'Plugin retiré',
+                        message: 'L\'extension a été supprimée de votre espace personnel.',
+                        type: 'warning'
+                    });
+                } else {
+                    // Ajout
+                    myPlugins.push(currentPluginId);
+                    modal.show({
+                        title: 'Extension ajoutée !',
+                        message: 'Le plugin est désormais disponible dans votre espace Cutflow.',
+                        type: 'success'
+                    });
+                }
+                localStorage.setItem('myPlugins', JSON.stringify(myPlugins));
+                
+                btnLoader.classList.add('hidden');
+                btnText.classList.remove('hidden');
+                addToSpaceBtn.disabled = false;
+                
+                updateBtnState();
+                filterPlugins();
+            }, 1500);
+        });
+    }
+
+    // Fermeture du volet latéral
+    closeSidebarBtn.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full', 'opacity-0');
+        setTimeout(() => {
+            sidebar.classList.add('hidden');
+        }, 300);
+    });
+</script>
+
+<%- include('partials/footer') %>

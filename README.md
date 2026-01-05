@@ -13,12 +13,16 @@
 
 Le site est composé de plusieurs sections stratégiques pour maximiser la conversion :
 
-- **Page d'Accueil** : Hero section impactante avec promesse de valeur, vidéo promotionnelle et témoignages.
-- **Présentation Produit** : Détails techniques, cas d'usage (YouTubeurs, créateurs) et captures d'écran.
+- **Mode Sombre** : Intégration complète d'un mode sombre avec switcher dans le header et persistance du choix via `localStorage`.
+- **Page FAQ dédiée** : Section d'aide interactive avec système d'accordéon pour les questions fréquentes.
+- **Bibliothèque de Plugins** : Système interactif pour rechercher, filtrer et ajouter des extensions (IA Video Finder, etc.) à son espace personnel.
+- **Dashboard Utilisateur** : Interface personnalisée pour gérer sa licence, télécharger le logiciel, accéder à la documentation, gérer ses plugins et voir l'historique de ses échanges avec le support.
+- **Gestion de Compte** : Options sécurisées pour l'annulation d'abonnement et la suppression définitive du compte avec modales de confirmation.
+- **Système d'Authentification** : Inscription, connexion avec option "Se souvenir de moi" et redirection intelligente des utilisateurs connectés.
+- **Popups Personnalisées** : Système de modales élégantes et réactives pour les confirmations et les messages d'erreur.
 - **Grille de Tarifs** : Comparatif des offres (Starter, Pro, Studio) avec options d'abonnement.
 - **Espace Exposé** : Section dédiée à la présentation approfondie du projet (contexte pédagogique).
 - **Formulaire de Contact** : Validation des données et conformité RGPD avec stockage sécurisé en base de données.
-- **Espace Connexion** : Interface authentifiée pour les utilisateurs enregistrés.
 - **Conformité Légale** : Pages dédiées aux mentions légales, politique de confidentialité, cookies, CGU et CGV.
 - **Gestion des Cookies** : Bandeau de consentement avec persistance locale.
 
@@ -26,9 +30,9 @@ Le site est composé de plusieurs sections stratégiques pour maximiser la conve
 
 Pour garantir simplicité et efficacité, les technologies suivantes ont été sélectionnées :
 
-- **Backend** : [Node.js](https://nodejs.org/) avec le framework [Express](https://expressjs.com/).
+- **Backend** : [Node.js](https://nodejs.org/) avec le framework [Express](https://expressjs.com/) et [express-session](https://www.npmjs.com/package/express-session) pour l'authentification.
 - **Frontend** : Moteur de templates [EJS](https://ejs.co/) pour un rendu dynamique côté serveur.
-- **Design** : [Tailwind CSS](https://tailwindcss.com/) pour une interface moderne et entièrement responsive.
+- **Design** : [Tailwind CSS](https://tailwindcss.com/) pour une interface moderne, accentuée (bordures marquées) et entièrement responsive.
 - **Base de données** : [SQLite](https://www.sqlite.org/) pour sa légèreté et sa facilité d'intégration dans un projet d'étude.
 
 ---
@@ -71,11 +75,12 @@ Le site sera accessible à l'adresse : [http://localhost:3000](http://localhost:
 
 Pour tester la fonctionnalité de connexion, vous pouvez utiliser les comptes suivants créés lors de l'hydratation :
 
-| Rôle | Email | Mot de passe |
-| :--- | :--- | :--- |
+| Rôle | Email | Mot de passe    |
+| :--- | :--- |:----------------|
 | **Administrateur** | `admin@cutflow.com` | `adminpassword` |
-| **Utilisateur standard** | `user@example.com` | `userpassword` |
-| **Testeur** | `test@cutflow.fr` | `testpassword` |
+| **Utilisateur standard** | `user@example.com` | `userpassword`  |
+| **Testeur** | `test@cutflow.fr` | `testpassword`  |
+| **Testeur** | `nolicense@cutflow.com` | `password`      |
 
 ---
 
@@ -87,7 +92,12 @@ Pour tester la fonctionnalité de connexion, vous pouvez utiliser les comptes su
 │   ├── css/            # Fichiers de styles (Tailwind)
 │   └── js/             # Scripts frontend (ex: gestion cookies)
 ├── views/              # Templates EJS
-│   └── partials/       # Composants réutilisables (header, footer, etc.)
+│   ├── partials/       # Composants réutilisables (header, footer, modal, etc.)
+│   ├── dashboard.ejs   # Tableau de bord utilisateur
+│   ├── plugins.ejs     # Bibliothèque de plugins
+│   ├── inscription.ejs # Page d'inscription
+│   ├── faq.ejs         # Page Foire Aux Questions
+│   └── ...             # Autres pages (index, produit, tarifs, etc.)
 ├── app.js              # Point d'entrée principal de l'application
 ├── database.js         # Configuration et initialisation de la base de données
 ├── seed.js             # Script d'hydratation des données de test
@@ -99,9 +109,9 @@ Pour tester la fonctionnalité de connexion, vous pouvez utiliser les comptes su
 
 ## ⚖️ Conformité et Sécurité
 
-- **RGPD** : Le formulaire de contact inclut une case à cocher obligatoire pour l'acceptation de la politique de confidentialité.
-- **Protection des données** : Les messages sont enregistrés en base de données avec horodatage.
-- **Sécurité** : Les routes sont structurées pour séparer la logique métier du rendu visuel.
+- **RGPD** : Le formulaire de contact et l'inscription incluent une case à cocher obligatoire pour l'acceptation de la politique de confidentialité.
+- **Protection des données** : Les messages et les comptes utilisateurs sont enregistrés de manière structurée avec horodatage.
+- **Sécurité** : Gestion de session côté serveur, redirection des utilisateurs non authentifiés et protection contre les accès non autorisés au dashboard.
 
 ---
 
