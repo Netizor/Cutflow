@@ -10,7 +10,7 @@ yarn-error.log*
 .env
 
 # SQLite database
-data/*.sqlite
+# data/*.sqlite
 data/*.sqlite-journal
 
 # OS files
