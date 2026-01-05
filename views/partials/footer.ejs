@@ -1,0 +1,77 @@
+</main>
+<footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Cutflow</h3>
+                <p class="text-gray-400">Le futur du montage vidéo, simple et rapide.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Produit</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/produit" class="hover:text-white">Fonctionnalités</a></li>
+                    <li><a href="/tarifs" class="hover:text-white">Tarifs</a></li>
+                    <li><a href="/connexion" class="hover:text-white">Télécharger</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Ressources</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/expose" class="hover:text-white">Exposé</a></li>
+                    <li><a href="/contact" class="hover:text-white">Aide / FAQ</a></li>
+                    <li><a href="/contact" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Légal</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/legal/mentions-legales" class="hover:text-white">Mentions légales</a></li>
+                    <li><a href="/legal/confidentialite" class="hover:text-white">Confidentialité</a></li>
+                    <li><a href="/legal/cookies" class="hover:text-white">Cookies</a></li>
+                    <li><a href="/legal/cgu" class="hover:text-white">CGU</a></li>
+                    <li><a href="/legal/cgv" class="hover:text-white">CGV</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400">&copy; 2026 Cutflow. Tous droits réservés.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+                <a href="#" class="text-gray-400 hover:text-white">LinkedIn</a>
+                <a href="#" class="text-gray-400 hover:text-white">YouTube</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bandeau Cookies -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 transform translate-y-full transition-transform duration-300 z-50">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm mb-4 md:mb-0">Nous utilisons des cookies pour améliorer votre expérience sur notre site. <a href="/legal/cookies" class="underline">En savoir plus</a>.</p>
+        <div class="flex space-x-4">
+            <button onclick="acceptCookies()" class="bg-blue-600 px-4 py-2 rounded text-sm font-bold">Accepter</button>
+            <button onclick="refuseCookies()" class="bg-gray-700 px-4 py-2 rounded text-sm font-bold">Refuser</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function acceptCookies() {
+        document.getElementById('cookie-banner').style.transform = 'translateY(100%)';
+        localStorage.setItem('cookiesAccepted', 'true');
+    }
+    function refuseCookies() {
+        document.getElementById('cookie-banner').style.transform = 'translateY(100%)';
+        localStorage.setItem('cookiesAccepted', 'false');
+    }
+    window.onload = function() {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-banner').style.transform = 'translateY(0)';
+            }, 1000);
+        }
+    }
+</script>
+
+</body>
+</html>

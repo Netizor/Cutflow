@@ -1,0 +1,104 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Réalisez vos montages vidéo en un clin d'œil.</h1>
+            <p class="text-xl mb-8 text-blue-100">Cutflow simplifie le processus de création vidéo grâce à une interface intuitive et des outils puissants pilotés par l'IA.</p>
+            <div class="flex space-x-4">
+                <a href="/connexion" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition">Essai Gratuit</a>
+                <a href="#demo" class="border border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-600 transition flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                    Voir la démo
+                </a>
+            </div>
+        </div>
+        <div class="md:w-1/2">
+            <div class="bg-gray-200 rounded-lg shadow-2xl p-4 transform rotate-2">
+                <div class="bg-gray-800 rounded h-64 md:h-96 flex items-center justify-center">
+                    <p class="text-gray-500">[Mockup Interface Logiciel]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vidéo Promotionnelle -->
+<section id="demo" class="py-20 bg-white">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-12">Découvrez Cutflow en 30 secondes</h2>
+        <div class="max-w-4xl mx-auto aspect-video bg-black rounded-xl flex items-center justify-center text-white">
+            <p>[Vidéo Promotionnelle - 30s]</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pourquoi ce logiciel ? -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16">Pourquoi choisir Cutflow ?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">⚡</div>
+                <h3 class="text-xl font-bold mb-4">Gain de temps</h3>
+                <p class="text-gray-600">Automatisez les tâches répétitives et concentrez-vous sur votre créativité.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">✨</div>
+                <h3 class="text-xl font-bold mb-4">Simplicité</h3>
+                <p class="text-gray-600">Une interface drag-and-drop accessible à tous, sans formation complexe.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
+                <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">🚀</div>
+                <h3 class="text-xl font-bold mb-4">Performances</h3>
+                <p class="text-gray-600">Rendu ultra-rapide et exportations optimisées pour tous les réseaux sociaux.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Avant / Après -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16">Avant vs Après Cutflow</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="bg-red-50 p-8 rounded-xl border border-red-100">
+                <h3 class="text-xl font-bold text-red-600 mb-4">Montage Classique</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start"><span class="text-red-500 mr-2">❌</span> Interface complexe et surchargée</li>
+                    <li class="flex items-start"><span class="text-red-500 mr-2">❌</span> Heures perdues en tâches manuelles</li>
+                    <li class="flex items-start"><span class="text-red-500 mr-2">❌</span> Rendus lents et bogues fréquents</li>
+                </ul>
+            </div>
+            <div class="bg-green-50 p-8 rounded-xl border border-green-100">
+                <h3 class="text-xl font-bold text-green-600 mb-4">Avec Cutflow</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start"><span class="text-green-500 mr-2">✅</span> Workflow fluide et intuitif</li>
+                    <li class="flex items-start"><span class="text-green-500 mr-2">✅</span> IA qui assiste votre montage</li>
+                    <li class="flex items-start"><span class="text-green-500 mr-2">✅</span> Rendu instantané 4K</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ courte -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold text-center mb-12">Questions fréquentes</h2>
+        <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="font-bold mb-2">Cutflow est-il gratuit ?</h3>
+                <p class="text-gray-600">Nous proposons une version d'essai gratuite de 14 jours pour tester toutes les fonctionnalités.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="font-bold mb-2">Quels formats sont supportés ?</h3>
+                <p class="text-gray-600">Tous les formats standards (MP4, MOV, AVI) ainsi que les fichiers RAW pour les professionnels.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

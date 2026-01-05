@@ -1,0 +1,59 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h1 class="text-4xl font-bold text-center mb-8">Contactez-nous</h1>
+        <p class="text-xl text-gray-600 text-center mb-12">Une question ? Un besoin spécifique ? Notre équipe est là pour vous aider.</p>
+
+        <% if (success) { %>
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-8" role="alert">
+                <strong class="font-bold">Succès !</strong>
+                <span class="block sm:inline">Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.</span>
+            </div>
+        <% } %>
+
+        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <form action="/contact" method="POST" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom complet</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <div>
+                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Sujet</label>
+                    <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <div class="flex items-start">
+                    <input type="checkbox" id="rgpd" name="rgpd" required class="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <label for="rgpd" class="ml-2 block text-sm text-gray-600">
+                        J'accepte la <a href="/legal/confidentialite" class="text-blue-600 hover:underline">politique de confidentialité</a> et j'autorise Cutflow à conserver mes données pour répondre à ma demande.
+                    </label>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition shadow-lg">Envoyer le message</button>
+            </form>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+            <div>
+                <h3 class="font-bold text-lg mb-2">Email direct</h3>
+                <p class="text-gray-600">contact@cutflow.com</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-2">Support technique</h3>
+                <p class="text-gray-600">support@cutflow.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
