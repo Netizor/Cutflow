@@ -16,8 +16,22 @@
                     <li class="flex items-center dark:text-gray-300"><span class="text-blue-600 dark:text-blue-400 mr-2">✓</span> Suppression du bruit de fond intelligente</li>
                 </ul>
             </div>
-            <div class="bg-gray-200 dark:bg-gray-800 h-80 rounded-xl flex items-center justify-center border-2 border-gray-300 dark:border-gray-700 shadow-inner">
-                <p class="text-gray-500 dark:text-gray-400 font-medium">[Capture d'écran - IA Montage]</p>
+            <div class="bg-gray-200 dark:bg-gray-800 h-80 rounded-xl overflow-hidden border-2 border-gray-300 dark:border-gray-700 shadow-inner relative flex items-center justify-center p-4">
+                <div class="w-full h-full bg-gray-900 rounded-lg flex flex-col">
+                    <div class="h-8 bg-gray-800 border-b border-gray-700 flex items-center px-2 space-x-2">
+                        <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="flex-grow p-4 flex flex-col space-y-4">
+                        <div class="h-4 bg-blue-600/30 w-3/4 rounded animate-pulse"></div>
+                        <div class="h-4 bg-gray-700 w-1/2 rounded"></div>
+                        <div class="h-4 bg-blue-600/30 w-2/3 rounded animate-pulse"></div>
+                        <div class="flex-grow border-2 border-dashed border-gray-700 rounded flex items-center justify-center">
+                            <span class="text-xs text-gray-500">IA en cours d'analyse...</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -26,8 +40,26 @@
                 <h2 class="text-3xl font-bold mb-6 dark:text-white">Interface Intuitive</h2>
                 <p class="text-gray-600 dark:text-gray-300 mb-4">Plus besoin de passer des heures à chercher vos outils. Tout est à portée de clic dans une interface pensée par des monteurs pour des monteurs.</p>
             </div>
-            <div class="bg-gray-200 dark:bg-gray-800 h-80 rounded-xl flex items-center justify-center md:order-1 border-2 border-gray-300 dark:border-gray-700 shadow-inner">
-                <p class="text-gray-500 dark:text-gray-400 font-medium">[Capture d'écran - Interface]</p>
+            <div class="bg-gray-200 dark:bg-gray-800 h-80 rounded-xl overflow-hidden md:order-1 border-2 border-gray-300 dark:border-gray-700 shadow-inner p-4">
+                <div class="grid grid-cols-4 gap-2 h-full">
+                    <div class="col-span-1 bg-gray-900 rounded p-2 flex flex-col space-y-2">
+                        <div class="w-full h-8 bg-gray-800 rounded"></div>
+                        <div class="w-full h-8 bg-gray-800 rounded"></div>
+                        <div class="w-full h-8 bg-blue-600 rounded"></div>
+                    </div>
+                    <div class="col-span-3 bg-gray-950 rounded relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                             <div class="w-12 h-12 bg-white/10 rounded-full border border-white/20 flex items-center justify-center">
+                                 <div class="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+                             </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-8 bg-gray-900 border-t border-gray-800 flex items-center px-2 space-x-1">
+                            <div class="h-1 bg-blue-600 w-1/4 rounded"></div>
+                            <div class="h-1 bg-gray-700 w-1/4 rounded"></div>
+                            <div class="h-1 bg-gray-700 w-1/2 rounded"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
