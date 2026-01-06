@@ -5,35 +5,38 @@
     <div class="container mx-auto px-4 max-w-4xl">
         <h1 class="text-4xl font-bold mb-12 dark:text-white"><%= title %></h1>
         
-        <div class="prose prose-blue max-w-none text-gray-600 dark:text-gray-300 space-y-8">
+        <div class="prose prose-blue max-w-none text-gray-600 dark:text-gray-300 space-y-12">
             <% if (page === 'mentions-legales') { %>
-                <section class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl border-2 border-gray-100 dark:border-gray-700 shadow-sm">
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">1. Éditeur du site</h2>
-                    <p>Le site Cutflow est édité par la société Cutflow SAS, au capital de 10 000€, immatriculée au RCS de Paris sous le numéro 123 456 789.</p>
-                    <p>Siège social : 123 Rue de l'Innovation, 75001 Paris, France.</p>
+                <section class="p-10 bg-white dark:bg-gray-800 rounded-3xl border-2 border-gray-100 dark:border-gray-700 shadow-xl">
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6 border-b-4 border-blue-600 w-fit pb-2">1. Éditeur du site</h2>
+                    <p class="text-lg leading-relaxed mb-4">Le site Cutflow est édité par la société <strong>Cutflow SAS</strong>, au capital de 10 000€, immatriculée au RCS de Paris sous le numéro 123 456 789.</p>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl border-l-8 border-blue-600">
+                        <p class="mb-0 italic text-blue-800 dark:text-blue-300">Siège social : 123 Rue de l'Innovation, 75001 Paris, France.</p>
+                    </div>
                 </section>
-                <section class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl border-2 border-gray-100 dark:border-gray-700 shadow-sm">
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">2. Hébergeur</h2>
-                    <p>Le site est hébergé par CloudHost, 456 Avenue des Serveurs, 69002 Lyon, France.</p>
+                <section class="p-10 bg-white dark:bg-gray-800 rounded-3xl border-2 border-gray-100 dark:border-gray-700 shadow-xl">
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6 border-b-4 border-blue-600 w-fit pb-2">2. Hébergeur</h2>
+                    <p class="text-lg leading-relaxed">Le site est hébergé par <strong>CloudHost</strong>, 456 Avenue des Serveurs, 69002 Lyon, France.</p>
                 </section>
             <% } else if (page === 'confidentialite') { %>
-                <section class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl border-2 border-gray-100 dark:border-gray-700 shadow-sm">
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">1. Données collectées</h2>
-                    <p>Nous collectons les données que vous nous transmettez via le formulaire de contact (nom, email, sujet, message).</p>
+                <section class="p-10 bg-white dark:bg-gray-800 rounded-3xl border-2 border-gray-100 dark:border-gray-700 shadow-xl">
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6 border-b-4 border-blue-600 w-fit pb-2">1. Données collectées</h2>
+                    <p class="text-lg leading-relaxed">Nous collectons les données que vous nous transmettez via le formulaire de contact (nom, email, sujet, message).</p>
                 </section>
-                <section class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl border-2 border-gray-100 dark:border-gray-700 shadow-sm">
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">2. Utilisation des données</h2>
-                    <p>Vos données sont exclusivement utilisées pour répondre à vos demandes et améliorer nos services.</p>
+                <section class="p-10 bg-white dark:bg-gray-800 rounded-3xl border-2 border-gray-100 dark:border-gray-700 shadow-xl">
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6 border-b-4 border-blue-600 w-fit pb-2">2. Utilisation des données</h2>
+                    <p class="text-lg leading-relaxed">Vos données sont exclusivement utilisées pour répondre à vos demandes et améliorer nos services.</p>
                 </section>
             <% } else if (page === 'cookies') { %>
-                <section class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl border-2 border-gray-100 dark:border-gray-700 shadow-sm">
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Gestion des cookies</h2>
-                    <p>Nous utilisons des cookies techniques nécessaires au bon fonctionnement du site et des cookies d'analyse pour mesurer notre audience.</p>
+                <section class="p-10 bg-white dark:bg-gray-800 rounded-3xl border-2 border-gray-100 dark:border-gray-700 shadow-xl">
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6 border-b-4 border-blue-600 w-fit pb-2">Gestion des cookies</h2>
+                    <p class="text-lg leading-relaxed">Nous utilisons des cookies techniques nécessaires au bon fonctionnement du site et des cookies d'analyse pour mesurer notre audience.</p>
                 </section>
             <% } else { %>
-                <section class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl border-2 border-gray-100 dark:border-gray-700 shadow-sm">
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Conditions Générales</h2>
-                    <p>Ceci est une page de démonstration pour les conditions générales du site Cutflow. Dans un projet réel, ces pages contiendraient les termes juridiques complets.</p>
+                <section class="p-10 bg-white dark:bg-gray-800 rounded-3xl border-2 border-gray-100 dark:border-gray-700 shadow-xl text-center">
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Conditions Générales</h2>
+                    <div class="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+                    <p class="text-lg leading-relaxed">Ceci est une page de démonstration pour les conditions générales du site Cutflow. Dans un projet réel, ces pages contiendraient les termes juridiques complets.</p>
                 </section>
             <% } %>
         </div>
