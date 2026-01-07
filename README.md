@@ -118,3 +118,40 @@ Pour tester la fonctionnalité de connexion, vous pouvez utiliser les comptes su
 ## 📄 Licence
 
 Ce projet est sous licence **ISC**. Voir le fichier `package.json` pour plus de détails.
+
+```
+Cutflow
+├─ app.js
+├─ data
+│  └─ database.sqlite
+├─ database.js
+├─ doc.md
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ css
+│  │  └─ style.css
+│  └─ images
+│     └─ logo.jpg
+├─ README.md
+├─ seed.js
+└─ views
+   ├─ 404.ejs
+   ├─ connexion.ejs
+   ├─ contact.ejs
+   ├─ dashboard.ejs
+   ├─ expose.ejs
+   ├─ faq.ejs
+   ├─ index.ejs
+   ├─ inscription.ejs
+   ├─ legal.ejs
+   ├─ partials
+   │  ├─ footer.ejs
+   │  ├─ head.ejs
+   │  ├─ header.ejs
+   │  └─ modal.ejs
+   ├─ plugins.ejs
+   ├─ produit.ejs
+   └─ tarifs.ejs
+
+```
